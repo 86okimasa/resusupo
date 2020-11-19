@@ -5,14 +5,30 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    binding.pry
+    @admin = Admin.new
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @admin = Admin.create(admin_params)
+    binding.pry
+    if @admin.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def admin_params
+    params.require(:admin).permit(:shop_name, :email, :password, :password_confirmation)
+  end
+
+
+end
 
   # GET /resource/edit
   # def edit
@@ -42,7 +58,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -59,4 +75,4 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-end
+
