@@ -2,14 +2,113 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.header-main{
+  width: 100vw;
+  background-image: image-url('dan-gold-E6HjQaB7UEA-unsplash.png');
+  background-size: cover;
+}
+
 .header-login-bar{
   display: flex;
   justify-content: space-between;
   width: 100vw;
+  align-items: center;
   .logo{
     margin-left: 50px;
+    color: yellow;
   }
   .header-login-btn{
     margin-right: 50px;
+    .new-btn{
+      display: inline-block;
+      padding: 0.4em 1.6em;
+      font-size: 0.8em;
+      color: #87CEFA;
+      text-decoration: none;
+      user-select: none;
+      border: 1px #87CEFA solid;
+      border-radius: 3px;
+      transition: 0.4s ease;
+    }
   }
+}
+
+.title-contents{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .service-title{
+    color: white;
+  }
+  .catch-copy{
+    color: white;
+  }
+  .login{
+    display: flex;
+    .login-btn{
+      display: inline-block;
+      padding: 0.4em 1.6em;
+      font-size: 1em;
+      color: lightblue;
+      text-decoration: none;
+      user-select: none;
+      border: 1px blue solid;
+      border-radius: 3px;
+      transition: 0.4s ease;
+      margin: 1em 1em 2em 1em;
+    }
+  }
+}
+
+.owner-explanation{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  .owner{
+    padding: 30px 0;
+    width: 50vw;
+    background-image: image-url('fabio-rodrigues-iuLMNZkXsSw-unsplash.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .owner-exp{
+    padding: 30px 0;
+    width: 50vw;
+    background-color: rgb(131, 224, 131);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.supporter-explanation{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  .supporter{
+    padding: 30px 0;
+    width: 50vw;
+    background-image: image-url('jimmy-conover-SEQ2VI0KI6A-unsplash.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .supporter-exp{
+    padding: 30px 0;
+    width: 50vw;
+    background-color: rgb(131, 224, 131);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.shop-index{
+  display: flex;
+  justify-content: center;
 }
