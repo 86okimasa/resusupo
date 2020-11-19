@@ -1,4 +1,9 @@
-<h1>レスサポ</h1>
-<%= link_to '掲載希望の事業主様', "#" %>
-<%= link_to '応援団に加入', "#" %>
-<%= link_to 'お店を探したい', "#" %>
+<header class='top-page-header'>
+  <div class='header-login-bar'>
+    <h1 class='logo'>レスサポ</h1>
+    <div class='header-login-btn'>
+      <%= link_to '掲載希望の事業主様', new_admin_session_path %>
+      <%= link_to '応援団に加入', new_user_session_path %>
+    </div>
+  </div>
+</header>
