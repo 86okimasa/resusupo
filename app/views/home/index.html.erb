@@ -1,9 +1,50 @@
-<header class='top-page-header'>
-  <div class='header-login-bar'>
-    <h1 class='logo'>レスサポ</h1>
-    <div class='header-login-btn'>
-      <%= link_to '掲載希望の事業主様', new_admin_session_path %>
-      <%= link_to '応援団に加入', new_user_session_path %>
+<div class='header-main'>
+  <header class='top-page-header'>
+    <div class='header-login-bar'>
+      <h2 class='logo'>レスサポ</h2>
+      <div class='header-login-btn'>
+        <%= link_to '掲載希望の事業主様',  new_admin_registration_path, class:'new-btn' %>
+        <%= link_to 'サポートに参加', new_user_registration_path, class:'new-btn' %>
+      </div>
+    </div>
+  </header>
+  <div class='main'>
+    <div class='title-contents'>
+      <h1 class='service-title'>
+        店舗の集客アプリ
+      </h1>
+      <p class='catch-copy'>
+        誰でも簡単に店舗情報を発信できる
+      </p>
+      <p class='catch-copy'>
+        自分の大好きな店舗を応援できる
+      </p>
+      <div class='login'>
+        <%= link_to '事業主様ログイン', new_admin_session_path, class:'login-btn' %>
+        <%= link_to 'サポーターログイン', new_user_session_path, class:'login-btn' %>
+      </div>
     </div>
   </div>
-</header>
+</div>
+<div class='owner-explanation'>
+  <div class='owner'>
+    <h1 class='owner-left'>事業主様 </h1>
+  </div>
+  <div class='owner-exp'>
+    <p>お店のアピールポイントを</p>
+    <p>自由に発信</p>
+  </div>
+</div>
+<div class='supporter-explanation'>
+  <div class='supporter'>
+    <h1 class='supporter-left'>サポーター</h1>
+  </div>
+  <div class='supporter-exp'>
+    <p>お気に入りの店舗を応援しよう
+    <p>コロナ禍につき、先払いシステム導入
+  </div>
+</div>
+
+<div class='shop-index'>
+  <h1>＜店舗一覧＞</h1>
+</div>
