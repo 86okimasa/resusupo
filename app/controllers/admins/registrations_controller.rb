@@ -3,32 +3,40 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  include Accessible
+  skip_before_action :check_user, except: [:new, :create]
 
   # GET /resource/sign_up
-  def new
-    binding.pry
-    @admin = Admin.new
-  end
+ # def new
+  #   super
+  # end
+
+    # def new
+    #   binding.pry
+    #   @admin = Admin.new
+    # end
 
   # POST /resource
-  def create
-    @admin = Admin.create(admin_params)
-    binding.pry
-    if @admin.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
+  # def create
+  #   super
+  # end
 
-  private
+#   def create
+#     @admin = Admin.create(admin_params)
+#     binding.pry
+#     if @admin.save
+#       redirect_to root_path
+#     else
+#       render :new
+#     end
+#   end
 
-  def admin_params
-    params.require(:admin).permit(:shop_name, :email, :password, :password_confirmation)
-  end
+      #   private
 
+      #   def admin_params
+      #     params.require(:admin).permit(:shop_name, :email, :password, :password_confirmation)
+      #   end
 
-end
 
   # GET /resource/edit
   # def edit
@@ -76,3 +84,4 @@ end
   #   super(resource)
   # end
 
+end
