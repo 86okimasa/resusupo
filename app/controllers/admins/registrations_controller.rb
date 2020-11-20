@@ -1,42 +1,20 @@
 # frozen_string_literal: true
 
 class Admins::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
   include Accessible
   skip_before_action :check_user, except: [:new, :create]
 
   # GET /resource/sign_up
- # def new
+  # def new
   #   super
   # end
-
-    # def new
-    #   binding.pry
-    #   @admin = Admin.new
-    # end
 
   # POST /resource
   # def create
   #   super
   # end
-
-#   def create
-#     @admin = Admin.create(admin_params)
-#     binding.pry
-#     if @admin.save
-#       redirect_to root_path
-#     else
-#       render :new
-#     end
-#   end
-
-      #   private
-
-      #   def admin_params
-      #     params.require(:admin).permit(:shop_name, :email, :password, :password_confirmation)
-      #   end
-
 
   # GET /resource/edit
   # def edit
@@ -62,12 +40,12 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:shop_name])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -75,13 +53,13 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    informations_path
+  end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    new_admin_registration_path
+  end
 
 end

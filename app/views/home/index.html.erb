@@ -3,8 +3,16 @@
     <div class='header-login-bar'>
       <h2 class='logo'>レスサポ</h2>
       <div class='header-login-btn'>
-        <%= link_to '掲載希望の事業主様',  new_admin_registration_path, class:'new-btn' %>
-        <%= link_to 'サポートに参加', new_user_registration_path, class:'new-btn' %>
+        <% if user_signed_in? == false && admin_signed_in? == false  %>
+          <%= link_to '掲載希望の事業主様',  new_admin_registration_path, class:'new-btn' %>
+          <%= link_to 'サポートに参加', new_user_registration_path, class:'new-btn' %>
+        <% elsif user_signed_in? == true && admin_signed_in? == false %>
+          <%= link_to current_user.nickname, "#", class:'new-btn' %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'new-btn' %>
+        <% elsif user_signed_in? == false && admin_signed_in? == true %>
+          <%= link_to current_admin.shop_name, informations_path, class:'new-btn' %>
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:'new-btn' %>
+        <% end %>
       </div>
     </div>
   </header>
@@ -20,8 +28,10 @@
         自分の大好きな店舗を応援できる
       </p>
       <div class='login'>
+      <% unless user_signed_in? || admin_signed_in? %>
         <%= link_to '事業主様ログイン', new_admin_session_path, class:'login-btn' %>
         <%= link_to 'サポーターログイン', new_user_session_path, class:'login-btn' %>
+      <% end %>
       </div>
     </div>
   </div>
