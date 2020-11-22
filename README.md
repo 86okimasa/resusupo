@@ -30,22 +30,20 @@
 | municipalities | string     | null: false       |
 | address        | string     | null: false       |
 | building       | string     |                   |
-| access         | string     |                   |
+| access         | string     | null: false       |
 | open_hour      | time       | null: false       |
 | close_hour     | time       | null: false       |
-| holiday_id     | integer    | null: false       |
+| holiday        | string     | null: false       |
 | budget         | integer    | null: false       |
-| cashless       | string     | null: false       |
 | seat_number    | integer    | null: false       |
 | tobacco_id     | integer    | null: false       |
-| children_id    | integer    | null: false       |
-| wi_fi_id       | integer    | null: false       |
+| child_id       | integer    | null: false       |
 
 ### Association
 
 - belongs_to :admin
-- has_one :cuisine
-- has-one :
+- has_many :cuisine
+- has-many :appeals
 
 ## cuisines
 
@@ -56,18 +54,18 @@
 
 ### Association
 
-- belongs_to :informations
+- belongs_to :information
 
 ## appeals
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| appeal_name | string | null: false |
-| explanation | text   | null: false |
+| Column       | Type   | Options     |
+| ------------ | ------ | ----------- |
+| appeal_point | string | null: false |
+| explanation  | text   | null: false |
 
 ### Association
 
-- belongs_to :informations
+- belongs_to :information
 
 
 
