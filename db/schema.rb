@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_19_045424) do
+ActiveRecord::Schema.define(version: 2020_11_22_063011) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_19_045424) do
   end
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "shop_name", null: false
+    t.string "company_name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -44,6 +44,51 @@ ActiveRecord::Schema.define(version: 2020_11_19_045424) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "admin_id"
+    t.string "shop_name", null: false
+    t.string "phone_number", null: false
+    t.integer "prefecture_id", null: false
+    t.string "municipalities", null: false
+    t.string "address", null: false
+    t.string "building"
+    t.string "access", null: false
+    t.string "business_hour", null: false
+    t.string "holiday", null: false
+    t.integer "budget", null: false
+    t.integer "seat_number", null: false
+    t.integer "tobacco_id", null: false
+    t.integer "child_id", null: false
+    t.text "remarks"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_information_on_admin_id"
+  end
+
+  create_table "information_cashlesses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "information_id"
+    t.integer "cashless_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_information_cashlesses_on_information_id"
+  end
+
+  create_table "information_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "information_id"
+    t.integer "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_information_genres_on_information_id"
+  end
+
+  create_table "information_wi_fis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "information_id"
+    t.integer "wi_fi_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_information_wi_fis_on_information_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -60,4 +105,8 @@ ActiveRecord::Schema.define(version: 2020_11_19_045424) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "information", "admins"
+  add_foreign_key "information_cashlesses", "information"
+  add_foreign_key "information_genres", "information"
+  add_foreign_key "information_wi_fis", "information"
 end
