@@ -55,6 +55,29 @@
   </div>
 </div>
 
-<div class='shop-index'>
-  <h1>＜店舗一覧＞</h1>
+<div class='item-contents'>
+  <h2 class='title'>店舗一覧</h2>
+  <ul class='information-lists'>
+    <% @informations.each do |information| %>
+      <li class='list'>
+        <%= link_to information_path(information.id) do %>
+        <div class='information-img-content'>
+          <%= image_tag information.image, class: "information-img" %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= information.shop_name %>
+          </h3>
+          <div class='item-price'>
+            <%# @informationgenres.each do |informationgenre| %>
+            <h5>
+              ジャンル
+            <h5>
+            <%# end %>
+          </div>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>

@@ -112,3 +112,17 @@
   display: flex;
   justify-content: center;
 }
+.information-lists{
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.list{
+  margin-left: 10px;
+  list-style: none;
+}
+.information-img{
+  width: 20vw;
+  margin: 0 auto;
+}
