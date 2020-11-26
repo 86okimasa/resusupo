@@ -1,6 +1,6 @@
 class InformationsController < ApplicationController
   def index
-
+    
   end
 
   def new
@@ -9,11 +9,11 @@ class InformationsController < ApplicationController
 
   def create
     @admin_information = AdminInformation.new(information_params)
-    # if @admin_information.valid?
-    if @admin_information.save
-      redirect_to action: :index
+    if @admin_information.valid?
+      @admin_information.save
+      redirect_to informations_path
     else
-      render new_information_path
+      render :new
     end
   end
 

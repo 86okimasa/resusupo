@@ -1,6 +1,6 @@
 class AdminInformation
   include ActiveModel::Model
-  attr_accessor :information_id, :admin_id, :shop_name,:phone_number,:prefecture_id, :municipalities, :address, :building, :access, :business_hour, :holiday, :budget, :seat_number, :tobacco_id, :child_id, :remarks, :information_id, :wi_fi_id, :cashless_id, :genre_id, :image
+  attr_accessor :information_id, :admin_id, :shop_name,:phone_number,:prefecture_id, :municipalities, :address, :building, :access, :business_hour, :holiday, :budget, :seat_number, :tobacco_id, :child_id, :remarks, :wi_fi_id, :cashless_id, :genre_id, :image
 
   with_options presence: true do
     validates :shop_name
@@ -16,7 +16,6 @@ class AdminInformation
     validates :tobacco_id, numericality: { other_than: 0, message: "いずれかを選択してください" }
     validates :child_id,  numericality: { other_than: 0, message: "いずれかを選択してください" }
     validates :admin_id
-    validates :information_id
     validates :wi_fi_id
     validates :cashless_id
     validates :genre_id
