@@ -19,6 +19,7 @@ class InformationsController < ApplicationController
 
   def show
     @information = Information.find(params[:id])
+    @informationgenre = InformationGenre.find(@information.id)
   end
 
   private

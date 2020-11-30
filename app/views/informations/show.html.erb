@@ -1,1 +1,18 @@
-<h1>aaa</h1>
+<div class="item-show">
+  <div class="item-box">
+    <h2 class="name">
+      <%= @information.shop_name %>
+    </h2>
+    <div class='item-img-content'>
+      <%= image_tag @information.image ,class:"item-box-img" %>
+    </div>
+  </div>
+</div>
+<div class="item-price-box">
+  <span class="item-price">
+    <%= @informationgenre.genre.name %>
+  </span>
+  <span class="item-postage">
+    <%= @information.prefecture.name %>
+  </span>
+</div>

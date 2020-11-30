@@ -10,7 +10,7 @@
           <%= link_to current_user.nickname, "#", class:'new-btn' %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'new-btn' %>
         <% elsif user_signed_in? == false && admin_signed_in? == true %>
-          <%= link_to current_admin.company_name, informations_path, class:'new-btn' %>
+          <%= link_to "#{current_admin.company_name} マイページ", informations_path, class:'new-btn' %>
           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:'new-btn' %>
         <% end %>
       </div>
@@ -51,7 +51,7 @@
   </div>
   <div class='supporter-exp'>
     <p>お気に入りの店舗を応援しよう
-    <p>コロナ禍につき、先払いシステム導入
+    <p>応援メッセージ、フォロー、投げ銭システム搭載
   </div>
 </div>
 
