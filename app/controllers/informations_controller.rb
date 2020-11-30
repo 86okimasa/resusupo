@@ -20,6 +20,7 @@ class InformationsController < ApplicationController
   def show
     @information = Information.find(params[:id])
     @informationgenre = InformationGenre.find(@information.id)
+    @comments = @information.comments.includes(:user)
   end
 
   private

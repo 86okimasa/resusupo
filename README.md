@@ -9,6 +9,7 @@
 | password  | string | null: false |
 
 ### Association
+
 - has_one :information
 
 
@@ -19,6 +20,10 @@
 | nickname | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
+
+### Association
+
+- has_many :comments
 
 ## informations
 
@@ -43,7 +48,8 @@
 
 - belongs_to :admin
 - has_many :cuisine
-- has-many :appeals
+- has_many :appeals
+- has_many :comments
 
 ## cuisines
 
@@ -66,6 +72,20 @@
 ### Association
 
 - belongs_to :information
+
+## comments
+
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| text        | text       | null: false |
+| user        | references |             |
+| information | references |             |
+
+### Association
+
+- belongs_to :user
+- belongs_to :information 
+
 
 
 

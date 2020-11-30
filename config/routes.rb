@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :informations, only: [:index, :new, :create, :show]
+  resources :informations, only: [:index, :new, :create, :show] do
+    resources :comments, only: [:create]
+  end
 end

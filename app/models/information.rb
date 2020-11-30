@@ -5,6 +5,7 @@ class Information < ApplicationRecord
   has_many :information_cashlesses
   has_many :information_wi_fis
   has_one_attached :image
+  has_many :comments, dependent: :destroy
 
   def genres
     information_genres.map(&:genre)
