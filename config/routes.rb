@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  
+  resources :users, only: [:show]
 
   resources :informations, only: [:index, :new, :create, :show] do
     resources :comments, only: [:create]

@@ -8,6 +8,7 @@
           <%= link_to 'サポートに参加', new_user_registration_path, class:'new-btn' %>
         <% elsif user_signed_in? == true && admin_signed_in? == false %>
           <%= link_to current_user.nickname, "#", class:'new-btn' %>
+          <%= link_to 'マイページ', user_path(current_user.id), class:'new-btn' %>
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'new-btn' %>
         <% elsif user_signed_in? == false && admin_signed_in? == true %>
           <%= link_to "#{current_admin.company_name} マイページ", informations_path, class:'new-btn' %>
