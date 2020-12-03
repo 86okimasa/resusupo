@@ -1,3 +1,7 @@
 <h1>詳細ページ</h1>
 <p>名前 : <%= @user.nickname %></p>
 <p>メールアドレス : <%= @user.email %></p>
+<p>フォロー店舗一覧</p>
+<% @follows.each do |follow| %>
+  <%= link_to follow.information.shop_name, information_path(follow.information_id) %>
+<% end %>
