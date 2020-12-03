@@ -9,9 +9,11 @@
   </div>
 </div>
 <div class="item-price-box">
+  <% @informationgenres.each do |informationgenre| %>
   <span class="item-price">
-    <%= @informationgenre.genre.name %>
+    <%= informationgenre.genre.name %>
   </span>
+  <% end %>
   <span class="item-postage">
     <%= @information.prefecture.name %>
   </span>
