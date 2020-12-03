@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  
+  resources :users, only: [:show]
 
-  resources :informations, only: [:index, :new, :create, :show]
+  resources :informations, only: [:index, :new, :create, :show] do
+    resources :comments, only: [:create]
+    resources :follows, only: [:create, :destroy]
+    # post 'add' => 'follows#create', as: 'create_follow'
+    # delete '/add' => 'follows#destroy', as: 'destroy_follow'
+  end
 end
