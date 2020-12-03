@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_092332) do
+ActiveRecord::Schema.define(version: 2020_12_01_145150) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2020_11_30_092332) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["information_id"], name: "index_comments_on_information_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "information_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_follows_on_information_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "information", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,6 +126,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_092332) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "information"
   add_foreign_key "comments", "users"
+  add_foreign_key "follows", "information"
+  add_foreign_key "follows", "users"
   add_foreign_key "information", "admins"
   add_foreign_key "information_cashlesses", "information"
   add_foreign_key "information_genres", "information"

@@ -1,0 +1,9 @@
+<% if @information.followed_by?(current_user) %>
+   <%= link_to 'フォロー解除', information_follow_path(@information), method: :delete, remote: true, id: :"like-button-#{@information.id}" do %>
+       <i class="fa-lg fas fa-heart icon-btn liked"></i>
+   <% end %>
+<% else %>
+   <%= link_to 'フォローする', information_follows_path(@information), method: :post, remote: true, id: :"like-button-#{@information.id}" do %>
+       <i class="fa-lg fas fa-heart icon-btn not-like"></i>
+   <% end %>
+<% end %>

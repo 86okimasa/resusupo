@@ -24,6 +24,7 @@
 ### Association
 
 - has_many :comments
+- has_many :follows
 
 ## informations
 
@@ -50,6 +51,7 @@
 - has_many :cuisine
 - has_many :appeals
 - has_many :comments
+- has_many :follows
 
 ## cuisines
 
@@ -86,6 +88,16 @@
 - belongs_to :user
 - belongs_to :information 
 
+## follows
 
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| user        | references |             |
+| information | references |             |
+
+### Association
+
+- belongs_to :user
+- belongs_to :information 
 
 
