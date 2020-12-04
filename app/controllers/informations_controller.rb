@@ -23,6 +23,10 @@ class InformationsController < ApplicationController
     @comments = @information.comments.includes(:user)
   end
 
+  def search
+    @informations = Information.search(params[:keyword])
+  end
+
   private
 
   def information_params

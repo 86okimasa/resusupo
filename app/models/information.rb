@@ -27,6 +27,14 @@ class Information < ApplicationRecord
     information_wi-fis.map(&:wi_fi)
   end
 
+  def self.search(search)
+    if search != ""
+      Information.where('shop_name LIKE(?)', "%#{search}%")
+    else
+      Information.all
+    end
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
   belongs_to :tobacco

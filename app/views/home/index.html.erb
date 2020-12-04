@@ -55,7 +55,10 @@
     <p>応援メッセージ、フォロー、投げ銭システム搭載
   </div>
 </div>
-
+<%= form_with(url: search_informations_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%= form.text_field :keyword, placeholder: "店舗を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
 <div class='item-contents'>
   <h2 class='title'>店舗一覧</h2>
   <ul class='information-lists'>
