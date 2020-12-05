@@ -55,10 +55,32 @@
     <p>応援メッセージ、フォロー、投げ銭システム搭載
   </div>
 </div>
-<%= form_with(url: search_informations_path, local: true, method: :get, class: "search-form") do |form| %>
-  <%= form.text_field :keyword, placeholder: "店舗を検索する", class: "search-input" %>
-  <%= form.submit "検索", class: "search-btn" %>
+<h1>
+  店舗検索
+</h1>
+<%= search_form_for @p, url: search_informations_path do |f| %>
+  <%= f.label :shop_name_cont, '店舗名' %>
+  <%= f.search_field :shop_name_cont, placeholder: '店舗名を入力(一部でも可)' %>
+  <%= f.label :prefecture_id_eq, '都道府県' %>
+  <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし', disabled: 0 %>
+  <%= f.label :municipalities_or_access_cont, '周辺' %>
+  <%= f.search_field :municipalities_or_access_cont, placeholder: "市町村や駅名など"%>
+  <%= f.label :information_genres_genre_id_eq, 'ジャンル' %>
+  <%= f.collection_select :information_genres_genre_id_eq, Genre.all, :id, :name, include_blank: '指定なし' %>
+  <%= f.label :budget_gteq, '予算' %>
+  <%= f.search_field :budget_gteq, placeholder: '半角数字で金額を入力' %>円〜
+  <%= f.label :tobacco_id_eq, '禁煙状況' %>
+  <%= f.collection_select :tobacco_id_eq, Tobacco.all, :id, :name, include_blank: '指定なし', disabled: 0 %>
+  <%= f.label :child_id_eq, 'お子様連れ' %>
+  <%= f.collection_select :child_id_eq, Child.all, :id, :name, include_blank: '指定なし', disabled: 0 %>
+ <br>
+  <%= f.submit '検索' %>
 <% end %>
+<%# 店舗名検索 %>
+<%#= form_with(url: search_informations_path, local: true, method: :get, class: "search-form") do |form| %>
+  <%#= form.text_field :keyword, placeholder: "店舗を検索する", class: "search-input" %>
+  <%#= form.submit "検索", class: "search-btn" %>
+<%# end %>
 <div class='item-contents'>
   <h2 class='title'>店舗一覧</h2>
   <ul class='information-lists'>
