@@ -24,6 +24,10 @@ class InformationsController < ApplicationController
     @information = Information.find(params[:id])
     @informationgenres = InformationGenre.where(information_id: @information.id)
     @comments = @information.comments.includes(:user)
+    @comment = Comment.new
+    @rate_len = @comments.map(&:rate).length
+    @rate_sum = @comments.map(&:rate).sum
+    @rate_avg = (@rate_sum.to_f / @rate_len).round(1)
   end
 
   def search
