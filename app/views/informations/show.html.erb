@@ -73,7 +73,7 @@
         <% @comments.each do |comment| %>
           <li class="comments_list">
             <%= comment.text %>
-            <%= comment.user.nickname %>
+            ( <%= comment.user.nickname %> )
           </li >
         <% end %>
       <% end %>
