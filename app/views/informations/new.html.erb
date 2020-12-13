@@ -94,13 +94,15 @@
   <div>
     ・対応可キャッシュレス決済
     <span class="indispensable">必須</span>
-    <div class = "cashless-check-box" >
+    <div id="check-box-main" >
       <%= f.collection_check_boxes :cashless_id, Cashless.all, :id, :name do |cashless| %>
         <% if cashless.text == 'VISA' %>
-          <%= cashless.label { cashless.check_box } %>
-          <%= image_tag "credit-card_22@0.5.png", class:"cashless-image" %>
+          <div class='image-box'>
+            <%= cashless.label { cashless.check_box } %> 
+            <%= cashless.label { image_tag "credit-card_22@0.5.png", class:'cashless-image'} %>
+          </div>
         <% else %>
-          <%= cashless.label { cashless.check_box + cashless.text } %>
+            <%= cashless.label { cashless.check_box + cashless.text } %>
         <% end %>
       <% end %>
     </div>
