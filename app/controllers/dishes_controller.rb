@@ -9,7 +9,6 @@ class DishesController < ApplicationController
 
   def create
     @dish = Dish.new(dish_params)
-    binding.pry
     if @dish.valid?
       @dish.save
       redirect_to informations_path(@dish.information_id)

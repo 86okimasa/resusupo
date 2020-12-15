@@ -16,6 +16,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       const inputHTML = document.createElement('input')
       inputHTML.setAttribute('id', `item_image_${imageElementNum}`)
       inputHTML.setAttribute('name', 'dish[images][]')
+      inputHTML.setAttribute('name', 'appeal[images][]')
       inputHTML.setAttribute('type', 'file')
 
         // 生成したHTMLの要素をブラウザに表示させる

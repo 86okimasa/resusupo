@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :informations, only: [:index, :new, :create, :show] do
     resources :comments, only: [:create]
     resources :follows, only: [:create, :destroy]
-    resources :dishes, only: [:index, :new, :create, :show]
+    resources :dishes, only: [:index, :new, :create]
+    resources :appeals, only: [:index, :new, :create]
     collection do
       get 'search'
     end

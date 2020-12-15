@@ -1,0 +1,7 @@
+<% @appeals.each do |appeal| %>
+  <div>
+    <% appeal.images.each do |image| %>
+      <%= image_tag image, class:"appeal-image"%>
+    <% end %>
+  </div>
+<% end %>

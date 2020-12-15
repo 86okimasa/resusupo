@@ -1,0 +1,42 @@
+<%= form_with model: @appeal, url: information_appeals_path , id: '#', class: '#', local: true do |f| %>
+  <div class='credit-card-form'>
+    <h1 class='info-input-haedline'>
+      料理情報情報入力
+    </h1>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      店頭画像
+      <span class="indispensable">必須</span>
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :images, name: 'appeal[images][]', id:"item-image" %>
+      <div class='item-list' id="image-list"></div>
+    </div>
+    <% @appeal.images.each do |image| %>
+      <%= image_tag image, class: 'images' %>
+    <% end %>
+  </div>
+  <div class="new-items">
+    <div class="weight-bold-text">
+      アピールポイント
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :appeal_point, class:"items-text", id:"item-name", placeholder:"ポイント（必須 40文字まで)", maxlength:"40" %>
+  </div>
+  <div class="new-items">
+    <div class="weight-bold-text">
+      詳細
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :explanation, class:"items-text", id:"item-name", placeholder:"ポイントの説明（必須 200文字まで)", maxlength:"200" %>
+  </div>
+  <div class="sell-btn-contents">
+    <%= f.submit "登録する", class:"sell-btn" %>
+    <%=link_to 'もどる', informations_path, class:"back-btn" %>
+  </div>
+<% end %>

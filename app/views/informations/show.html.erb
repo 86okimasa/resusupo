@@ -19,6 +19,7 @@
   </span>
 </div>
 <%= link_to "料理情報", information_dishes_path(@information.id) %>
+<%= link_to "店舗詳細", information_appeals_path(@information.id) %>
 <div class="comment-top">
   <p>フォロワー数</p>
   <%= @information.follows.count %>
@@ -82,6 +83,7 @@
   <% end %>
   <% if admin_signed_in? %>
     <%= link_to "料理情報登録", new_information_dish_path(@information.id), class:'admin_my_page' %>
+    <%= link_to "アピールポイント登録", new_information_appeal_path(@information.id), class:'admin_my_page' %>
   <% end %>
   <%= link_to "トップページ", root_path %>
   <div class="links">
