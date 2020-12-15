@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_035727) do
+ActiveRecord::Schema.define(version: 2020_12_13_173333) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
     t.integer "rate"
     t.index ["information_id"], name: "index_comments_on_information_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "dishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "cooking_name", null: false
+    t.text "cooking_detail", null: false
+    t.bigint "information_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_dishes_on_information_id"
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -127,6 +136,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "information"
   add_foreign_key "comments", "users"
+  add_foreign_key "dishes", "information"
   add_foreign_key "follows", "information"
   add_foreign_key "follows", "users"
   add_foreign_key "information", "admins"

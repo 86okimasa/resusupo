@@ -18,6 +18,7 @@
     <%= @information.prefecture.name %>
   </span>
 </div>
+<%= link_to "料理情報", information_dishes_path(@information.id) %>
 <div class="comment-top">
   <p>フォロワー数</p>
   <%= @information.follows.count %>
@@ -79,6 +80,10 @@
       <% end %>
     </ul>
   <% end %>
+  <% if admin_signed_in? %>
+    <%= link_to "料理情報登録", new_information_dish_path(@information.id), class:'admin_my_page' %>
+  <% end %>
+  <%= link_to "トップページ", root_path %>
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の店舗

@@ -48,17 +48,18 @@
 ### Association
 
 - belongs_to :admin
-- has_many :cuisine
+- has_many :dishes
 - has_many :appeals
 - has_many :comments
 - has_many :follows
 
-## cuisines
+## dishes
 
-| Column         | Type   | Options     |
-| -------------- | ------ | ----------- |
-| cooking_name   | string | null: false |
-| cooking_detail | text   | null: false |
+| Column         | Type       | Options           |
+| -------------- | ---------- | ----------------- |
+| cooking_name   | string     | null: false       |
+| cooking_detail | text       | null: false       |
+| information    | references | foreign_key: true |
 
 ### Association
 
@@ -66,10 +67,11 @@
 
 ## appeals
 
-| Column       | Type   | Options     |
-| ------------ | ------ | ----------- |
-| appeal_point | string | null: false |
-| explanation  | text   | null: false |
+| Column        | Type       | Options           |
+| ------------- | ------ ----| ----------------- |
+| appeal_point  | string     | null: false       |
+| explanation   | text       | null: false       |
+| information   | references | foreign_key: true |
 
 ### Association
 
@@ -77,11 +79,12 @@
 
 ## comments
 
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| text        | text       | null: false |
-| user        | references |             |
-| information | references |             |
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| text        | text       | null: false       |
+| user        | references | foreign_key: true |
+| information | references | foreign_key: true |
+| rate        | integer    | null: false       |
 
 ### Association
 
@@ -90,10 +93,10 @@
 
 ## follows
 
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| user        | references |             |
-| information | references |             |
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| user        | references | foreign_key: true |
+| information | references | foreign_key: true |
 
 ### Association
 

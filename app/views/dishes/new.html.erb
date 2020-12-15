@@ -1,0 +1,42 @@
+<%= form_with model: @dish, url: information_dishes_path , id: '#', class: '#', local: true do |f| %>
+  <div class='credit-card-form'>
+    <h1 class='info-input-haedline'>
+      料理情報情報入力
+    </h1>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      店頭画像
+      <span class="indispensable">必須</span>
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :images, name: 'dish[images][]', id:"item-image" %>
+      <div class='item-list' id="image-list"></div>
+    </div>
+    <% @dish.images.each do |image| %>
+      <%= image_tag image, class: 'images' %>
+    <% end %>
+  </div>
+  <div class="new-items">
+    <div class="weight-bold-text">
+      料理名
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_field :cooking_name, class:"items-text", id:"item-name", placeholder:"料理名（必須 40文字まで)", maxlength:"40" %>
+  </div>
+  <div class="new-items">
+    <div class="weight-bold-text">
+      料理詳細
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :cooking_detail, class:"items-text", id:"item-name", placeholder:"料理説明（必須 200文字まで)", maxlength:"200" %>
+  </div>
+  <div class="sell-btn-contents">
+    <%= f.submit "登録する", class:"sell-btn" %>
+    <%=link_to 'もどる', informations_path, class:"back-btn" %>
+  </div>
+<% end %>

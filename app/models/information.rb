@@ -8,6 +8,7 @@ class Information < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :users, through: :follows
+  has_many :dishes
 
   # 「すでにいいねしたかどうか」を判断するためのメソッド
   # followsテーブルの「いいねしたユーザー：user_id」カラムにuser.idが存在するのか探す
