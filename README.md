@@ -48,10 +48,20 @@
 ### Association
 
 - belongs_to :admin
+- has_many :information_genres
+- has_many :genres, through: :information_genres
+- has_many :information_cashlesses
+- has_many :cashlesses, through: :information_cashlesses
+- has_many :information_wi_fis
+- has_many :wi_fis, through: :information_wi_fis
+- has_one_attached :image
+- has_many :comments, dependent: :destroy
+- has_many :follows, dependent: :destroy
+- has_many :users, through: :follows
 - has_many :dishes
-- has_many :appeals
-- has_many :comments
-- has_many :follows
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :tobacco
+- belongs_to_active_hash :child
 
 ## dishes
 
@@ -99,7 +109,7 @@
 ### Association
 
 - belongs_to :measure
-- has_many :generals
+- belongs_to_active_hash :general
 
 
 ## comments
@@ -128,4 +138,38 @@
 - belongs_to :user
 - belongs_to :information 
 
+## information_cashless
 
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| cashless    | integer    | null: false       |
+| information | references | foreign_key: true |
+
+### Association
+
+- belongs_to_active_hash :cashless
+- belongs_to :information 
+
+## information_genre
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| genre       | integer    | null: false       |
+| information | references | foreign_key: true |
+
+### Association
+
+- belongs_to_active_hash :genre
+- belongs_to :information
+
+## information_wi_fi
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| wi_fi       | integer    | null: false       |
+| information | references | foreign_key: true |
+
+### Association
+
+- belongs_to_active_hash :wi_fi
+- belongs_to :information 
