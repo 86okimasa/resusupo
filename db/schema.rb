@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_061827) do
+ActiveRecord::Schema.define(version: 2020_12_16_052326) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -129,6 +129,22 @@ ActiveRecord::Schema.define(version: 2020_12_15_061827) do
     t.index ["information_id"], name: "index_information_wi_fis_on_information_id"
   end
 
+  create_table "measure_generals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "measure_id"
+    t.integer "general_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["measure_id"], name: "index_measure_generals_on_measure_id"
+  end
+
+  create_table "measures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "information_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_measures_on_information_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -153,4 +169,6 @@ ActiveRecord::Schema.define(version: 2020_12_15_061827) do
   add_foreign_key "information_cashlesses", "information"
   add_foreign_key "information_genres", "information"
   add_foreign_key "information_wi_fis", "information"
+  add_foreign_key "measure_generals", "measures"
+  add_foreign_key "measures", "information"
 end

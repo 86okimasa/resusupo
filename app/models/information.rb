@@ -2,8 +2,11 @@ class Information < ApplicationRecord
   
   belongs_to :admin
   has_many :information_genres
+  has_many :genres, through: :information_genres
   has_many :information_cashlesses
+  has_many :cashlesses, through: :information_cashlesses
   has_many :information_wi_fis
+  has_many :wi_fis, through: :information_wi_fis
   has_one_attached :image
   has_many :comments, dependent: :destroy
   has_many :follows, dependent: :destroy

@@ -77,6 +77,31 @@
 
 - belongs_to :information
 
+## measures
+
+| Column          | Type       | Options           |
+| --------------- | ------ ----| ----------------- |
+| content         | text       | null: false       |
+| information     | references | foreign_key: true |
+
+### Association
+
+- belongs_to :information
+- has_many :measure_generals
+
+## measure_generals
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| measure     | references | foreign_key: true |
+| general     | integer    | null: false       |
+
+### Association
+
+- belongs_to :measure
+- has_many :generals
+
+
 ## comments
 
 | Column      | Type       | Options           |

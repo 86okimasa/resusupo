@@ -12,6 +12,7 @@ class WiFi < ActiveHash::Base
   include ActiveHash::Associations
   
   has_many :information_wi_fis
+  has_many :informations, through: :information_wi_fis
 
   def informations
     information_wi_fis.map(&:information)

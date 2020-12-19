@@ -1,0 +1,44 @@
+<%= form_with model: @information_measure, url: information_measures_path , id: '#', class: '#', local: true do |f| %>
+  <div class='credit-card-form'>
+    <h1 class='info-input-haedline'>
+      コロナ対策情報入力
+    </h1>
+  </div>
+  <%= render 'shared/error_messages', model: f.object %>
+  <div class="img-upload">
+    <div class="weight-bold-text">
+      対策画像
+      <span class="indispensable">必須</span>
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :image, id:"item-image" %>
+      <div class='item-list' id="image-list"></div>
+    </div>
+    <%# @information_measure.images.each do |image| %>
+      <%#= image_tag image, class: 'images' %>
+    <%# end %>
+  </div>
+  <div class="new-items">
+    <div class="weight-bold-text">
+      対策内容
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :content, class:"items-text", id:"item-name", placeholder:"料理説明（必須 200文字まで)", maxlength:"200" %>
+  </div>
+  <div>
+    対策アイコン選択
+    <span class="indispensable">必須</span>
+    <div>
+      <%= f.collection_check_boxes :general_id, General.all, :id, :name do |general| %>
+        <%= general.label { general.check_box + general.text } %>
+      <% end %>
+    </div>
+  </div>
+  <div class="sell-btn-contents">
+    <%= f.submit "登録する", class:"sell-btn" %>
+    <%=link_to 'もどる', informations_path, class:"back-btn" %>
+  </div>
+<% end %>

@@ -84,6 +84,7 @@
   <% if admin_signed_in? %>
     <%= link_to "料理情報登録", new_information_dish_path(@information.id), class:'admin_my_page' %>
     <%= link_to "アピールポイント登録", new_information_appeal_path(@information.id), class:'admin_my_page' %>
+    <%= link_to "コロナ対策登録", new_information_measure_path(@information.id), class:'admin_my_page' %>
   <% end %>
   <%= link_to "トップページ", root_path %>
   <div class="links">

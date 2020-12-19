@@ -17,10 +17,6 @@ class DishesController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   private
 
   def dish_params

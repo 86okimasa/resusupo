@@ -39,6 +39,7 @@ class Cashless < ActiveHash::Base
   include ActiveHash::Associations
   
   has_many :information_cashlesses
+  has_many :informations, through: :information_cashlesses
 
   def informations
     information_cashlesses.map(&:information)
