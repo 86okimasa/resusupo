@@ -3,7 +3,7 @@ class InformationsController < ApplicationController
 
 
   def index
-    
+    @informations = Information.where(admin_id: current_admin.id)
   end
 
   def new

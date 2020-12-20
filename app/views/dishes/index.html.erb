@@ -1,0 +1,7 @@
+<% @dishes.each do |dish| %>
+  <div>
+    <% dish.images.each do |image| %>
+      <%= image_tag image, class:"dish-image"%>
+    <% end %>
+  </div>
+<% end %>

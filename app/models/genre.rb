@@ -22,6 +22,7 @@ class Genre < ActiveHash::Base
   include ActiveHash::Associations
   
   has_many :information_genres
+  has_many :informations, through: :information_genres
 
   def informations
     information_genres.map(&:information)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_035727) do
+ActiveRecord::Schema.define(version: 2020_12_16_052326) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "appeal_point", null: false
+    t.text "explanation", null: false
+    t.bigint "information_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_appeals_on_information_id"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "text", null: false
     t.bigint "user_id"
@@ -55,6 +64,15 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
     t.integer "rate"
     t.index ["information_id"], name: "index_comments_on_information_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "dishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "cooking_name", null: false
+    t.text "cooking_detail", null: false
+    t.bigint "information_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_dishes_on_information_id"
   end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,6 +129,22 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
     t.index ["information_id"], name: "index_information_wi_fis_on_information_id"
   end
 
+  create_table "measure_generals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "measure_id"
+    t.integer "general_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["measure_id"], name: "index_measure_generals_on_measure_id"
+  end
+
+  create_table "measures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "information_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["information_id"], name: "index_measures_on_information_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -125,12 +159,16 @@ ActiveRecord::Schema.define(version: 2020_12_09_035727) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appeals", "information"
   add_foreign_key "comments", "information"
   add_foreign_key "comments", "users"
+  add_foreign_key "dishes", "information"
   add_foreign_key "follows", "information"
   add_foreign_key "follows", "users"
   add_foreign_key "information", "admins"
   add_foreign_key "information_cashlesses", "information"
   add_foreign_key "information_genres", "information"
   add_foreign_key "information_wi_fis", "information"
+  add_foreign_key "measure_generals", "measures"
+  add_foreign_key "measures", "information"
 end
